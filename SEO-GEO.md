@@ -29,17 +29,16 @@ Status as of Nov 12, 2026. "Done" means built into the mockup in this repo; it g
 
 ## Must do before launch
 
-1. **Confirm ZIP 80918.** It's inferred from neighbouring Tomah Dr addresses; USPS hasn't confirmed it. Wrong NAP costs more than missing NAP.
-2. **Confirm opening days**, then add `openingHoursSpecification`. Hours must match Google Business Profile exactly.
-3. **Build the service pages** at their existing URLs: `/chiropractic-care`, `/dry-needling`, `/physical-therapy`, `/personal-training`, `/additional-therapies`, `/massage` (if still offered), plus a GyroStim page. These rank for "dry needling Colorado Springs" and similar searches; Home cannot. Each needs:
+1. ~~ZIP~~ Confirmed 80918. ~~Hours~~ Mon–Fri 9 AM–5 PM, now in schema and on the page. Make Google Business Profile, Bing Places and Apple match exactly.
+2. **Build the service pages** at their existing URLs: `/chiropractic-care`, `/dry-needling`, `/physical-therapy`, `/personal-training`, `/additional-therapies`, `/massage` (if still offered), plus a GyroStim page. These rank for "dry needling Colorado Springs" and similar searches; Home cannot. Each needs:
    - an answer-first opening paragraph saying what it is, who it helps and what a session involves;
    - the clinician who delivers it (`Person` link);
    - local FAQs;
    - real photos;
    - `MedicalTherapy` / `Service` schema.
-4. **Remove `noindex`** from all pages (marked in each `<head>`).
-5. **Convert images to WebP/AVIF** and serve responsive sizes (`srcset`). The JPGs are 200–850 KB.
-6. **Remove placeholder review cards** or fill them with real quotes. Don't mark reviews up as `AggregateRating` on our own site: Google ignores self-serving review stars for LocalBusiness.
+3. **Remove `noindex`** from all pages (marked in each `<head>`).
+4. **Convert images to WebP/AVIF** and serve responsive sizes (`srcset`). The JPGs are 200–850 KB.
+5. **Review cards stay as placeholders for now** (client decision). Fill them with real quotes before launch or remove the section. Don't mark reviews up as `AggregateRating` on our own site: Google ignores self-serving review stars for LocalBusiness.
 
 ## GEO / AI search: what moves the needle (sourced)
 

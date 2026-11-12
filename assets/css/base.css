@@ -27,7 +27,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .container { width: 100%; max-width: calc(var(--max-w) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section-y); }
 .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--space-5); }
-.stack > * + * { margin-top: var(--stack, var(--space-5)); }
+.stack { display: grid; gap: var(--stack, var(--space-5)); align-content: start; }
+.stack > * { margin: 0; }
+.stack > .link, .stack > .btn { justify-self: start; }
 .rule { height: 1px; background: var(--color-rule); border: 0; margin: 0; }
 
 /* ---- Typography ----------------------------------------------------- */

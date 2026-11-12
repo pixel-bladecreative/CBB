@@ -1,34 +1,208 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="js-motion">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CBB — Redesign</title>
-  <meta name="description" content="Experimental website redesign.">
+  <title>Center for Better Balance · Colorado Springs</title>
+  <meta name="description" content="Whole-body chiropractic care, dry needling, physical therapy and personal training in Colorado Springs.">
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/vendor/lenis.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>setTimeout(() => { if (!window.CBBMotionReady) document.documentElement.classList.remove('js-motion'); }, 2500);</script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="/">CBB</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
 
-  <main>
+  <header class="nav nav--on-dark">
+    <a class="nav__brand" href="/">CBB<small>Center for Better Balance</small></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/#services">Services</a>
+      <a href="/about">About</a>
+      <a href="/appointments">Appointments</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone" href="tel:+17192609611">Call or text (719) 260-9611</a>
+      <a class="btn btn--glass" href="/appointments#book">Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <button class="nav__menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    </div>
+  </header>
+  <div class="drawer" id="drawer">
+    <nav aria-label="Mobile">
+      <a href="/">Home</a><a href="/#services">Services</a><a href="/about">About</a><a href="/appointments">Appointments</a>
+    </nav>
+    <div class="drawer__foot">
+      <a class="btn" href="/appointments#book" style="--_bg: var(--plaster-50); --_fg: var(--ink-900)">Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <a class="t-lead" href="tel:+17192609611" style="color: inherit">Call or text (719) 260-9611</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- 01 HERO -->
     <section class="hero">
-      <h1>Experimental redesign</h1>
-      <p>A sandbox for testing new layouts, type and interactions.</p>
+      <div class="hero__media"><img data-parallax="0.1" src="/assets/img/interior/table-adjust.jpg" alt="Dr. Mike Valier adjusting a patient's back on a navy treatment table"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="t-label t-label--accent" data-reveal>Whole-body care in Colorado Springs</p>
+          <h1 class="t-hero" data-split>Get moving.<br>Stay moving.</h1>
+          <p class="t-lead" data-reveal data-delay=".35">Chiropractic care, dry needling, physical therapy and training under one roof, built around how you move, heal and perform.</p>
+        </div>
+        <div class="hero__foot">
+          <div class="facts" data-reveal-group>
+            <div class="fact" data-reveal><span class="fact__v">20+ years</span><span class="fact__k">of hands-on care</span></div>
+            <div class="fact" data-reveal><span class="fact__v">6 therapies</span><span class="fact__k">in one clinic</span></div>
+            <div class="fact" data-reveal><span class="fact__v">Tomah Dr</span><span class="fact__k">Colorado Springs</span></div>
+          </div>
+          <div class="glass invite" data-reveal data-delay=".5">
+            <div class="invite__thumb"><img src="/assets/img/interior/neck-adjust.jpg" alt=""></div>
+            <div class="invite__body">
+              <p class="invite__title">New patients welcome</p>
+              <a class="btn btn--glass" href="/appointments#book">Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="about" class="section"><h2>About</h2><p>Placeholder content.</p></section>
-    <section id="work" class="section"><h2>Work</h2><p>Placeholder content.</p></section>
-    <section id="contact" class="section"><h2>Contact</h2><p>Placeholder content.</p></section>
+
+    <!-- 02 PROMISE -->
+    <section class="section">
+      <div class="container split">
+        <div class="split__aside">
+          <p class="t-label t-label--accent" data-reveal>Our approach</p>
+          <p class="t-small" data-reveal>“A body in motion tends to stay in motion.”<br>Sir Isaac Newton</p>
+        </div>
+        <div class="stack" style="--stack: var(--space-6)">
+          <h2 class="t-h1" data-split>Pain relief, better mobility, more energy. We start by getting you moving.</h2>
+          <p class="t-body" data-reveal>Every person is different, so we use every tool available to treat you as an individual, with your own lifestyle and challenges. No assembly-line visits: we look at muscle and joint together and give you what you need to stay well between appointments.</p>
+          <a class="link" href="/about" data-reveal>Meet the team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 SERVICES -->
+    <section class="section theme-linen" id="services">
+      <div class="container">
+        <div class="eyebrow-row">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Services</p><h2 class="t-h1" data-split>How we can help</h2></div>
+          <p class="t-body" data-reveal>Most care plans combine two or three of these. Your first visit decides which.</p>
+        </div>
+        <ul class="index-list" data-index-preview>
+          <li><a class="index-row" href="/chiropractic-care" data-image="/assets/img/interior/table-adjust.jpg"><span class="index-row__num">01</span><span class="index-row__body"><h3 class="index-row__title">Chiropractic care</h3><p class="index-row__desc">Restoring motion to joints that are stuck, so muscles stop compensating.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          <li><a class="index-row" href="/dry-needling" data-image="/assets/img/interior/dry-needling.jpg"><span class="index-row__num">02</span><span class="index-row__body"><h3 class="index-row__title">Dry needling therapy</h3><p class="index-row__desc">Targeted release for tight, painful muscle and trigger points.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          <li><a class="index-row" href="/physical-therapy" data-image="/assets/img/interior/consult-screen.jpg"><span class="index-row__num">03</span><span class="index-row__body"><h3 class="index-row__title">Physical therapy</h3><p class="index-row__desc">Rehab plans that rebuild strength, mobility and function.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          <li><a class="index-row" href="/personal-training" data-image="/assets/img/interior/strength-dumbbell.jpg"><span class="index-row__num">04</span><span class="index-row__body"><h3 class="index-row__title">Personal training</h3><p class="index-row__desc">Coached strength work that keeps your results for the long run.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          <li><a class="index-row" href="#gyrostim" data-image="/assets/img/interior/gyrostim.jpg"><span class="index-row__num">05</span><span class="index-row__body"><h3 class="index-row__title">GyroStim</h3><p class="index-row__desc">Multi-axis neuro-rehabilitation for dizziness, balance and concussion.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          <li><a class="index-row" href="/additional-therapies" data-image="/assets/img/interior/neck-adjust.jpg"><span class="index-row__num">06</span><span class="index-row__body"><h3 class="index-row__title">Additional therapies</h3><p class="index-row__desc">Cupping and other supporting treatments, added where they help.</p></span><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 04 GYROSTIM -->
+    <section class="section theme-spruce" id="gyrostim">
+      <div class="container feature">
+        <div class="feature__media" data-clip><img src="/assets/img/interior/gyrostim.jpg" alt="A patient seated in the GyroStim multi-axis chair"></div>
+        <div class="stack" style="--stack: var(--space-6)">
+          <p class="t-label t-label--accent" data-reveal>Featured · GyroStim</p>
+          <h2 class="t-h1" data-split>Retrain your balance, one rotation at a time.</h2>
+          <p class="t-body" data-reveal>GyroStim is advanced multi-axis neuro-rehabilitation. Slow, controlled rotations challenge the systems that keep you steady, to target dizziness, recalibrate balance and help concussion recovery.</p>
+          <ul class="ticks" data-reveal>
+            <li><span>Dizziness</span><span>Vertigo and unsteadiness</span></li>
+            <li><span>Balance</span><span>Coordination and reaction</span></li>
+            <li><span>Concussion</span><span>Recovery support</span></li>
+          </ul>
+          <div><a class="btn" href="/appointments#book" data-reveal>Ask about GyroStim <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 HOW CARE WORKS -->
+    <section class="theme-dark hz" data-horizontal>
+      <div class="hz__track" data-track>
+        <div class="hz__intro">
+          <p class="t-label t-label--accent">How care works</p>
+          <h2 class="t-h1">Four steps, one plan.</h2>
+          <p class="t-body">Your plan has clear goals and timelines from the first visit.</p>
+        </div>
+        <div class="hz__item"><div class="media"><img src="/assets/img/interior/consult-screen.jpg" alt="Reviewing assessment results on screen" style="object-position: 65% 50%"></div><p class="t-label">01 · Assess</p><p class="t-h3">History, focused exam and a movement screen.</p></div>
+        <div class="hz__item"><div class="media"><img src="/assets/img/interior/neck-adjust.jpg" alt="Dr. Mike adjusting a patient's neck" style="object-position: 70% 50%"></div><p class="t-label">02 · Treat</p><p class="t-h3">Adjustments, soft tissue work and dry needling.</p></div>
+        <div class="hz__item"><div class="media"><img src="/assets/img/interior/gym-lunge.jpg" alt="A patient training in the clinic gym"></div><p class="t-label">03 · Strengthen</p><p class="t-h3">Rehab and training so results hold.</p></div>
+        <div class="hz__item"><div class="media"><img src="/assets/img/interior/strength-dumbbell.jpg" alt="A patient doing a dumbbell row"></div><p class="t-label">04 · Stay moving</p><p class="t-h3">A plan for life outside the clinic.</p></div>
+      </div>
+    </section>
+
+    <!-- 06 MEET DR. MIKE -->
+    <section class="section">
+      <div class="container split split--even">
+        <div class="media media--portrait"><img data-parallax="0.12" src="/assets/img/team/mike.jpg" alt="Dr. Mike Valier smiling in a treatment room"></div>
+        <div class="stack" style="--stack: var(--space-6); align-self: center">
+          <p class="t-label t-label--accent" data-reveal>Founder</p>
+          <h2 class="t-h1" data-split>Dr. Mike Valier, DC</h2>
+          <p class="t-lead" data-reveal>Raised in Manitou, Colorado. Over two decades of personalized, results-driven care, for pregnancy and postpartum, kids, athletes and every season of life.</p>
+          <a class="link" href="/about" data-reveal>Read Dr. Mike's story</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 REVIEWS -->
+    <section class="section theme-linen">
+      <div class="container">
+        <div class="eyebrow-row">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Patients</p><h2 class="t-h1" data-split>In their words</h2></div>
+          <span class="mock-note">Mockup · quotes to be pulled from existing reviews</span>
+        </div>
+        <div class="quotes" data-reveal-group>
+          <figure class="quote-card" data-reveal><p>Review quote one, two or three sentences, chosen from the clinic's existing reviews.</p><figcaption class="t-label">Patient name · Service</figcaption></figure>
+          <figure class="quote-card" data-reveal><p>Review quote two. Ideally a different service, such as dry needling or GyroStim.</p><figcaption class="t-label">Patient name · Service</figcaption></figure>
+          <figure class="quote-card" data-reveal><p>Review quote three. Ideally an athlete or long-time patient.</p><figcaption class="t-label">Patient name · Service</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 VISIT -->
+    <section class="section theme-dark">
+      <div class="container visit">
+        <div class="visit__head">
+          <h2 class="t-hero" data-split>Ready when<br>you are.</h2>
+          <a class="btn" href="/appointments#book" data-reveal>Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        </div>
+        <div class="visit__grid" data-reveal-group>
+          <div class="visit__item" data-reveal><span class="t-label">Address</span><p>5350 Tomah Dr #1600<br>Colorado Springs, CO</p><a href="https://www.google.com/maps/search/?api=1&query=5350+Tomah+Dr+%231600+Colorado+Springs+CO" target="_blank" rel="noopener">Get directions</a></div>
+          <div class="visit__item" data-reveal><span class="t-label">Call or text</span><p class="t-num" style="font-size: var(--text-h3)">(719) 260-9611</p><a href="tel:+17192609611">Call now</a></div>
+          <div class="visit__item" data-reveal><span class="t-label">Hours</span><p class="t-num" style="font-size: var(--text-h3)"><span data-count="9">9</span> AM – <span data-count="5">5</span> PM</p><span class="t-small">Days to confirm</span></div>
+          <div class="visit__item" data-reveal><span class="t-label">Email</span><p>cbbchiro@gmail.com</p><a href="mailto:cbbchiro@gmail.com">Send an email</a></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer"><small>&copy; <span id="year"></span> CBB</small></footer>
-  <script src="assets/js/main.js" defer></script>
+  <footer class="footer theme-dark">
+    <div class="container">
+      <div class="footer__top">
+        <div class="stack" style="--stack: var(--space-4)">
+          <p class="footer__mark">Center for<br>Better Balance</p>
+          <p class="t-small">Whole-body care in Colorado Springs.</p>
+        </div>
+        <div><h4 class="t-label">Visit</h4><ul><li>5350 Tomah Dr #1600</li><li>Colorado Springs, CO</li><li>9 AM – 5 PM</li></ul></div>
+        <div><h4 class="t-label">Contact</h4><ul><li><a href="tel:+17192609611">(719) 260-9611</a></li><li><a href="mailto:cbbchiro@gmail.com">cbbchiro@gmail.com</a></li><li><a href="/appointments#book">Book online</a></li></ul></div>
+        <div><h4 class="t-label">Follow</h4><ul><li><a href="https://www.instagram.com/cbbchiropractic" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=100095626749302" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Center for Better Balance · <a href="/terms-and-conditions">Terms & privacy</a></span>
+        <span>Supplements: <a href="https://www.designsforhealth.com/u/michaelvalier" target="_blank" rel="noopener">Designs For Health</a> · code CBB for 10% off</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap.min.js"></script>
+  <script src="/assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="/assets/vendor/SplitText.min.js"></script>
+  <script src="/assets/vendor/lenis.min.js"></script>
+  <script src="/assets/js/motion.js"></script>
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>

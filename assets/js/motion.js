@@ -11,6 +11,7 @@
    data-count="20"             number counts up (data-suffix optional)
    data-horizontal             section pins and its [data-track] scrolls sideways
    data-index-preview          .index-list rows show a cursor-following image
+   data-draw                   line grows (scaleY) as its parent scrolls through
    ========================================================================= */
 (() => {
   const root = document.documentElement;
@@ -133,6 +134,14 @@
       row.addEventListener('pointerleave', () => {
         box.classList.remove('is-on'); gsap.to(box, { scale: 0.85, duration: 0.4 });
       });
+    });
+  });
+
+  /* ---- Drawn lines (data-draw on the element that scales) ------------- */
+  document.querySelectorAll('[data-draw]').forEach((el) => {
+    gsap.fromTo(el, { scaleY: 0 }, {
+      scaleY: 1, ease: 'none',
+      scrollTrigger: { trigger: el.parentElement, start: 'top 70%', end: 'bottom 60%', scrub: 0.6 },
     });
   });
 

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" class="js-motion">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page in progress · Center for Better Balance</title>
+  <meta name="description" content="This page is part of the redesign and hasn't been built yet.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/vendor/lenis.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>setTimeout(() => { if (!window.CBBMotionReady) document.documentElement.classList.remove('js-motion'); }, 2500);</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="/">CBB<small>Center for Better Balance</small></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/#services">Services</a>
+      <a href="/about">About</a>
+      <a href="/appointments">Appointments</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone" href="tel:+17192609611">Call or text (719) 260-9611</a>
+      <a class="btn " href="/appointments#book">Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <button class="nav__menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    </div>
+  </header>
+  <div class="drawer" id="drawer">
+    <nav aria-label="Mobile">
+      <a href="/">Home</a><a href="/#services">Services</a><a href="/about">About</a><a href="/appointments">Appointments</a>
+    </nav>
+    <div class="drawer__foot">
+      <a class="btn" href="/appointments#book" style="--_bg: var(--plaster-50); --_fg: var(--ink-900)">Book a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <a class="t-lead" href="tel:+17192609611" style="color: inherit">Call or text (719) 260-9611</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="container page-head" style="min-height: 70svh; align-content: center">
+      <p class="t-label t-label--accent">Redesign preview</p>
+      <h1 class="t-hero">This page is still being designed.</h1>
+      <p class="t-lead">The mockup covers Home, About and Appointments for now.</p>
+      <div class="btn-row" style="display:flex; gap: var(--space-3); flex-wrap: wrap"><a class="btn" href="/">Back to home <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost" href="/appointments">Appointments</a></div>
+    </section>
+  </main>
+
+  <footer class="footer theme-dark">
+    <div class="container">
+      <div class="footer__top">
+        <div class="stack" style="--stack: var(--space-4)">
+          <p class="footer__mark">Center for<br>Better Balance</p>
+          <p class="t-small">Whole-body care in Colorado Springs.</p>
+        </div>
+        <div><h4 class="t-label">Visit</h4><ul><li>5350 Tomah Dr #1600</li><li>Colorado Springs, CO</li><li>9 AM – 5 PM</li></ul></div>
+        <div><h4 class="t-label">Contact</h4><ul><li><a href="tel:+17192609611">(719) 260-9611</a></li><li><a href="mailto:cbbchiro@gmail.com">cbbchiro@gmail.com</a></li><li><a href="/appointments#book">Book online</a></li></ul></div>
+        <div><h4 class="t-label">Follow</h4><ul><li><a href="https://www.instagram.com/cbbchiropractic" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/profile.php?id=100095626749302" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> Center for Better Balance · <a href="/terms-and-conditions">Terms & privacy</a></span>
+        <span>Supplements: <a href="https://www.designsforhealth.com/u/michaelvalier" target="_blank" rel="noopener">Designs For Health</a> · code CBB for 10% off</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/gsap.min.js"></script>
+  <script src="/assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="/assets/vendor/SplitText.min.js"></script>
+  <script src="/assets/vendor/lenis.min.js"></script>
+  <script src="/assets/js/motion.js"></script>
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

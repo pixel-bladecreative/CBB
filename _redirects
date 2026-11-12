@@ -1,0 +1,8 @@
+# Old Squarespace URLs -> redesign (301 keeps link equity)
+/home                      /                          301
+/services-1                /#services                 301
+/contact                   /appointments              301
+/new-patient-intake-form   /appointments#first-visit  301
+/cart                      /                          301
+# Service pages (/chiropractic-care, /dry-needling, /massage, /additional-therapies, /physical-therapy)
+# keep their URLs; build them before launch so these never 404.

@@ -1,0 +1,7 @@
+# Production robots.txt for www.cbbchiro.com (the Netlify preview pages carry noindex).
+# Search and AI-answer crawlers are allowed so the clinic can be cited in
+# Google AI Overviews / AI Mode, ChatGPT search, Perplexity, Bing Copilot and Apple.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.cbbchiro.com/sitemap.xml

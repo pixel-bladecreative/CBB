@@ -187,3 +187,7 @@ body.menu-open .nav { color: var(--plaster-50) !important; background: transpare
 .center { text-align: center; justify-items: center; }
 .skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--ink-900); color: var(--plaster-50); padding: 10px 14px; border-radius: var(--radius-sm); }
 .skip:focus { left: 8px; }
+
+/* ---- H1 that carries the keyword eyebrow + display line --------------- */
+.hero__h1 { display: grid; gap: var(--space-5); margin: 0; font-weight: 400; }
+.hero__h1 > .t-label { font-weight: 500; }

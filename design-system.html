@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en" class="js-motion">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CBB Design System</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/lenis.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <script>setTimeout(() => { if (!window.CBBMotionReady) document.documentElement.classList.remove('js-motion'); }, 2500);</script>
+  <style>
+    /* page-only helpers for the specimen layout */
+    .ds-hero { position: relative; min-height: 100svh; display: grid; align-items: end; overflow: hidden; color: var(--plaster-50); }
+    .ds-hero__bg { position: absolute; inset: 0; }
+    .ds-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .ds-hero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(23 28 30 / .55) 0%, rgb(23 28 30 / .1) 40%, rgb(23 28 30 / .75) 100%); }
+    .ds-hero__inner { position: relative; padding-bottom: var(--space-8); display: grid; gap: var(--space-7); }
+    .ds-hero__foot { display: flex; justify-content: space-between; align-items: end; gap: var(--space-5); flex-wrap: wrap; }
+    .ds-hero .glass { max-width: 26rem; display: grid; gap: var(--space-3); }
+    .ds-hero .t-label { color: rgb(247 245 241 / .75); }
+
+    .ds-head { display: grid; gap: var(--space-4); margin-bottom: var(--space-8); }
+    @media (min-width: 900px) { .ds-head { grid-template-columns: 1fr 1fr; align-items: end; } }
+
+    .principles { display: grid; gap: var(--space-6); }
+    @media (min-width: 800px) { .principles { grid-template-columns: repeat(3, 1fr); } }
+    .principle { display: grid; gap: var(--space-3); padding-top: var(--space-5); border-top: 1px solid var(--color-rule-strong); }
+
+    .palette { display: grid; gap: var(--space-7); }
+    @media (min-width: 1000px) { .palette { grid-template-columns: 5fr 7fr; align-items: start; } }
+    .palette__photo { position: sticky; top: 100px; }
+    .palette__photo .media { aspect-ratio: 4/5; }
+    .swatch-dot { position: absolute; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--plaster-50); box-shadow: var(--shadow-float); }
+    .swatch-dot { transform: translate(-50%,-50%); }
+    .swatch-dot span { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); white-space: nowrap; font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--plaster-50); background: rgb(23 28 30 / .55); padding: 5px 7px; border-radius: 4px; backdrop-filter: blur(6px); }
+    .swatch-dot--left span { left: auto; right: 30px; }
+    .chip__color { box-shadow: inset 0 0 0 1px rgb(28 27 23 / .08); }
+    @media (max-width: 700px) { .roles { display: block; overflow-x: auto; } .roles th:last-child, .roles td:last-child { min-width: 14rem; } .roles td { white-space: normal; } .ds-hero .t-label { max-width: 16rem; line-height: 1.6; } }
+    .family { display: grid; gap: var(--space-3); }
+    .family + .family { margin-top: var(--space-7); }
+    .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--space-3); }
+    .chip { border-radius: var(--radius-md); overflow: hidden; background: var(--color-surface); }
+    .chip__color { aspect-ratio: 4/3; }
+    .chip__meta { padding: var(--space-3); display: grid; gap: 2px; font-size: 13px; }
+    .chip__meta code { font: 500 11px/1.2 var(--font-mono); color: var(--color-text-muted); }
+
+    .roles { width: 100%; border-collapse: collapse; font-size: var(--text-small); margin-top: var(--space-7); }
+    .roles th, .roles td { text-align: left; padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--color-rule); vertical-align: top; }
+    .roles th { font: 500 var(--text-label)/1.2 var(--font-mono); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }
+    .roles .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 8px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .1); }
+
+    .type-row { display: grid; gap: var(--space-3); padding-block: var(--space-6); border-bottom: 1px solid var(--color-rule); }
+    @media (min-width: 900px) { .type-row { grid-template-columns: 14rem 1fr; align-items: baseline; } }
+    .type-row:first-child { border-top: 1px solid var(--color-rule); }
+    .type-spec { display: grid; gap: 4px; }
+
+    .scale-row { display: flex; align-items: center; gap: var(--space-4); padding-block: var(--space-2); }
+    .scale-row .bar { height: 12px; background: var(--color-accent); border-radius: 2px; }
+    .scale-row code { font: 500 12px/1 var(--font-mono); width: 9rem; color: var(--color-text-muted); }
+    .shapes { display: flex; gap: var(--space-5); flex-wrap: wrap; margin-top: var(--space-7); }
+    .shape { width: 120px; height: 120px; background: var(--plaster-300); display: grid; place-items: end start; padding: var(--space-3); font: 500 11px/1.3 var(--font-mono); color: var(--color-text-muted); }
+
+    .demo-grid { display: grid; gap: var(--space-6); }
+    @media (min-width: 900px) { .demo-grid { grid-template-columns: 1fr 1fr; } }
+    .panel { border-radius: var(--radius-lg); padding: clamp(1.5rem, 1rem + 2vw, 3rem); display: grid; gap: var(--space-5); align-content: start; }
+    .panel--light { background: var(--plaster-100); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+    .on-photo { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 320px; display: grid; align-items: end; padding: var(--space-5); }
+    .on-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .on-photo > .glass { position: relative; display: grid; gap: var(--space-3); max-width: 22rem; }
+
+    .cards3 { display: grid; gap: var(--space-5); }
+    @media (min-width: 800px) { .cards3 { grid-template-columns: repeat(3, 1fr); } }
+    .stats { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+    .motion-cell { display: grid; gap: var(--space-3); }
+    .motion-cell .t-label { color: var(--color-accent); }
+    .clip-demo { aspect-ratio: 16/9; border-radius: var(--radius-lg); overflow: hidden; }
+    .clip-demo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .hz { height: 100svh; display: grid; align-content: center; overflow: hidden; }
+    .hz__track { display: flex; gap: var(--space-5); padding-inline: var(--gutter); width: max-content; }
+    .hz__item { width: min(72vw, 520px); flex: none; display: grid; gap: var(--space-4); }
+    .hz__item .media { aspect-ratio: 4/5; }
+    @media (max-width: 860px) { .hz { height: auto; padding-block: var(--section-y); } .hz__track { overflow-x: auto; width: 100%; scroll-snap-type: x mandatory; } .hz__item { scroll-snap-align: start; } }
+
+    .ease-row { display: grid; grid-template-columns: 10rem 1fr; gap: var(--space-4); align-items: center; padding-block: var(--space-3); border-bottom: 1px solid var(--color-rule); }
+    .ease-track { height: 2px; background: var(--color-rule); position: relative; border-radius: 2px; }
+    .ease-ball { position: absolute; top: 50%; left: 0; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--color-accent); }
+    .ease-row:hover .ease-ball { left: calc(100% - 14px); }
+
+    .ds-foot { padding-block: var(--space-9) var(--space-6); }
+    .ds-foot__mark { font-size: clamp(5rem, 2rem + 18vw, 22rem); line-height: .8; letter-spacing: -0.05em; }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav nav--on-dark">
+    <a class="nav__brand" href="#top">CBB</a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#color">Color</a><a href="#type">Type</a><a href="#space">Space</a><a href="#components">Components</a><a href="#motion">Motion</a>
+    </nav>
+    <a class="btn btn--glass" href="#components">Schedule <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+  </header>
+
+  <main id="top">
+    <!-- HERO -------------------------------------------------------------->
+    <section class="ds-hero theme-dark">
+      <div class="ds-hero__bg"><img data-parallax="0.1" src="assets/img/interior/table-adjust.jpg" alt="Dr. Mike adjusting a patient on a navy leather table in the slate treatment room"></div>
+      <div class="container ds-hero__inner">
+        <p class="t-label t-label--accent" data-reveal>Center for Better Balance · Design System v0.1</p>
+        <h1 class="t-mega" data-split>Built for<br><span class="t-italic">motion.</span></h1>
+        <div class="ds-hero__foot">
+          <p class="t-lead" style="color: rgb(247 245 241 / .85)" data-reveal data-delay=".3">A small, quiet system drawn from the clinic itself: slate walls, walnut floors, navy leather and warm lamplight.</p>
+          <div class="glass" data-reveal data-delay=".45">
+            <p class="t-label">Inside</p>
+            <p class="t-small" style="color: rgb(247 245 241 / .85)">Tokens · Type · Components · Scroll motion. Everything here lives in <code>assets/css</code> and <code>assets/js/motion.js</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES -------------------------------------------------------->
+    <section class="section">
+      <div class="container">
+        <div class="ds-head">
+          <h2 class="t-h1" data-split>Premium, never busy.</h2>
+          <p class="t-body" data-reveal>Three rules every page should pass. When something feels loud, it usually breaks one of these.</p>
+        </div>
+        <div class="principles" data-reveal-group>
+          <div class="principle" data-reveal><span class="t-label t-label--accent">01</span><h3 class="t-h3">The room is the brand</h3><p class="t-body">Real photography of the clinic carries the color and warmth. The interface stays neutral so the place can speak.</p></div>
+          <div class="principle" data-reveal><span class="t-label t-label--accent">02</span><h3 class="t-h3">One gesture per section</h3><p class="t-body">Each section gets one motion idea: an image opening, a line rising, a track sliding. Never several at once.</p></div>
+          <div class="principle" data-reveal><span class="t-label t-label--accent">03</span><h3 class="t-h3">Calm type, clear action</h3><p class="t-body">A regular-weight serif for feeling, a precise sans for facts, a small mono for wayfinding. Booking is always one tap away.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOR -------------------------------------------------------------->
+    <section class="section theme-linen" id="color">
+      <div class="container">
+        <div class="ds-head">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Color</p><h2 class="t-h1" data-split>Sampled from the room.</h2></div>
+          <p class="t-body" data-reveal>Every color is pulled from the clinic's interior photos. Plaster for light, slate and spruce for dark chapters, walnut and leather for depth, and ochre as the one small signal.</p>
+        </div>
+        <div class="palette">
+          <div class="palette__photo" data-reveal>
+            <div class="media">
+              <img src="assets/img/interior/neck-adjust.jpg" alt="Treatment room with slate walls, navy table and walnut cabinet" style="object-position: 40% 50%">
+              <i class="swatch-dot" style="left: 49%; top: 28%; background: #3B474C"><span>Slate 700 · wall</span></i>
+              <i class="swatch-dot" style="left: 16%; top: 37%; background: #7A5236"><span>Walnut 500 · cabinet</span></i>
+              <i class="swatch-dot" style="left: 6%; top: 50%; background: #B7863A"><span>Ochre 500</span></i>
+              <i class="swatch-dot" style="left: 30%; top: 74%; background: #2F4D66"><span>Leather 500 · table</span></i>
+              <i class="swatch-dot swatch-dot--left" style="left: 79%; top: 68%; background: #7F9396"><span>Slate 400 · mist</span></i>
+            </div>
+          </div>
+          <div>
+            <div class="family" data-reveal>
+              <p class="t-label">Plaster · light surfaces</p>
+              <div class="chips">
+                <div class="chip"><div class="chip__color" style="background:#F7F5F1;box-shadow:inset 0 0 0 1px rgb(0 0 0/.06)"></div><div class="chip__meta">Plaster 50<code>#F7F5F1 · canvas</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#EFEBE4"></div><div class="chip__meta">Plaster 100<code>#EFEBE4</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#E3DDD3"></div><div class="chip__meta">Plaster 200<code>#E3DDD3 · linen</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#CFC7BA"></div><div class="chip__meta">Plaster 300<code>#CFC7BA</code></div></div>
+              </div>
+            </div>
+            <div class="family" data-reveal>
+              <p class="t-label">Slate & Spruce · dark chapters</p>
+              <div class="chips">
+                <div class="chip"><div class="chip__color" style="background:#171C1E"></div><div class="chip__meta">Slate 950<code>#171C1E</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#1F2629"></div><div class="chip__meta">Slate 900<code>#1F2629 · dark bg</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#3B474C"></div><div class="chip__meta">Slate 700<code>#3B474C · wall</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#7F9396"></div><div class="chip__meta">Slate 400<code>#7F9396 · mist</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#33433C"></div><div class="chip__meta">Spruce 700<code>#33433C · wall</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#E1E6DE"></div><div class="chip__meta">Spruce 100<code>#E1E6DE</code></div></div>
+              </div>
+            </div>
+            <div class="family" data-reveal>
+              <p class="t-label">Walnut, Leather, Ochre · depth & signal</p>
+              <div class="chips">
+                <div class="chip"><div class="chip__color" style="background:#4A2E1D"></div><div class="chip__meta">Walnut 700<code>#4A2E1D</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#7A5236"></div><div class="chip__meta">Walnut 500<code>#7A5236</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#2F4D66"></div><div class="chip__meta">Leather 500<code>#2F4D66 · focus</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#B7863A"></div><div class="chip__meta">Ochre 500<code>#B7863A · signal</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#D9B576"></div><div class="chip__meta">Ochre 300<code>#D9B576 · on dark</code></div></div>
+                <div class="chip"><div class="chip__color" style="background:#1C1B17"></div><div class="chip__meta">Ink 900<code>#1C1B17 · text</code></div></div>
+              </div>
+            </div>
+
+            <table class="roles" data-reveal>
+              <thead><tr><th>Role</th><th>Light</th><th>Dark chapter</th><th>Rule</th></tr></thead>
+              <tbody>
+                <tr><td>Background</td><td><i class="sw" style="background:#F7F5F1"></i>Plaster 50</td><td><i class="sw" style="background:#1F2629"></i>Slate 900</td><td>Alternate light and dark chapters; at most one spruce chapter per page.</td></tr>
+                <tr><td>Text</td><td><i class="sw" style="background:#1C1B17"></i>Ink 900</td><td><i class="sw" style="background:#F7F5F1"></i>Plaster 50</td><td>Muted text is the same color at lower opacity, never gray-on-gray.</td></tr>
+                <tr><td>Primary action</td><td><i class="sw" style="background:#1C1B17"></i>Ink 900</td><td><i class="sw" style="background:#F7F5F1"></i>Plaster 50</td><td>Hover fills with slate (light) or ochre (dark).</td></tr>
+                <tr><td>Accent</td><td><i class="sw" style="background:#B7863A"></i>Ochre 500</td><td><i class="sw" style="background:#D9B576"></i>Ochre 300</td><td>Dots, numerals, progress only. Not for body text on light (contrast 2.9:1).</td></tr>
+                <tr><td>Focus</td><td><i class="sw" style="background:#2F4D66"></i>Leather 500</td><td><i class="sw" style="background:#D9B576"></i>Ochre 300</td><td>2px outline, 3px offset on every interactive element.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPE --------------------------------------------------------------->
+    <section class="section" id="type">
+      <div class="container">
+        <div class="ds-head">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Typography</p><h2 class="t-h1" data-split>A voice that <span class="t-italic">listens.</span></h2></div>
+          <p class="t-body" data-reveal><strong>Newsreader</strong> (regular, optical sizing) for headlines. <strong>Geist</strong> for body and UI. <strong>Geist Mono</strong> for small labels and numbers. All free on Google Fonts. Sizes are fluid between 375px and 1440px screens.</p>
+        </div>
+        <div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Mega</span><code class="t-small">52→128 / 0.95 / −3.5%</code></div><p class="t-mega">Move well.</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Hero</span><code class="t-small">40→84 / 1.02 / −2.5%</code></div><p class="t-hero">Care that keeps you moving.</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">H1</span><code class="t-small">34→60 / 1.1</code></div><p class="t-h1">Whole-body chiropractic, not assembly-line treatment.</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">H2</span><code class="t-small">28→44 / 1.1</code></div><p class="t-h2">Dry needling therapy</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">H3</span><code class="t-small">22→28 / 1.2</code></div><p class="t-h3">What to expect on your first visit</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Lead</span><code class="t-small">Geist 18→22 / 1.5</code></div><p class="t-lead">Whether you're after pain relief, better mobility or more energy, we get you moving and keep you moving.</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Body</span><code class="t-small">Geist 17 / 1.6 · max 36rem</code></div><p class="t-body">Every person is different, so we use every tool available to treat you as an individual, with your own lifestyle and challenges. Your first visit includes a history review, a focused exam and a clear plan.</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Label</span><code class="t-small">Geist Mono 12 / +12% / caps</code></div><p class="t-label t-label--accent">03 · Physical therapy</p></div>
+          <div class="type-row" data-reveal><div class="type-spec"><span class="t-label">Quote</span><code class="t-small">Newsreader italic · H1</code></div><blockquote class="quote"><p class="quote__text">“A body in motion tends to stay in motion.”</p><cite class="quote__cite t-label">Sir Isaac Newton</cite></blockquote></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACE & SHAPE ------------------------------------------------------>
+    <section class="section theme-linen" id="space">
+      <div class="container">
+        <div class="ds-head">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Space & shape</p><h2 class="t-h1" data-split>Room to breathe.</h2></div>
+          <p class="t-body" data-reveal>An 8-point scale. Sections breathe with 80–160px of vertical padding. Gutters grow from 16px on phones to 40px on desktop. Surfaces are flat; the only shadow is for floating UI.</p>
+        </div>
+        <div data-reveal-group>
+          <div class="scale-row" data-reveal><code>--space-2 · 8</code><div class="bar" style="width:8px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-4 · 16</code><div class="bar" style="width:16px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-5 · 24</code><div class="bar" style="width:24px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-6 · 32</code><div class="bar" style="width:32px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-7 · 48</code><div class="bar" style="width:48px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-8 · 64</code><div class="bar" style="width:64px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-9 · 96</code><div class="bar" style="width:96px"></div></div>
+          <div class="scale-row" data-reveal><code>--space-10 · 128</code><div class="bar" style="width:128px"></div></div>
+        </div>
+        <div class="shapes" data-reveal-group>
+          <div class="shape" data-reveal style="border-radius: var(--radius-sm)">6px<br>buttons</div>
+          <div class="shape" data-reveal style="border-radius: var(--radius-md)">10px<br>cards, media</div>
+          <div class="shape" data-reveal style="border-radius: var(--radius-lg)">18px<br>stages</div>
+          <div class="shape" data-reveal style="border-radius: var(--radius-md); background: var(--plaster-50); box-shadow: var(--shadow-float)">float<br>shadow</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS --------------------------------------------------------->
+    <section class="section" id="components">
+      <div class="container">
+        <div class="ds-head">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Components</p><h2 class="t-h1" data-split>Few parts, used well.</h2></div>
+          <p class="t-body" data-reveal>Buttons are small rectangles, not pills. Their fill wipes up on hover and the arrow nudges forward. Every component adapts to light, dark and spruce chapters through tokens alone.</p>
+        </div>
+
+        <div class="demo-grid">
+          <div class="panel panel--light" data-reveal>
+            <p class="t-label">Buttons · light</p>
+            <div class="btn-row">
+              <a class="btn" href="#components">Schedule a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+              <a class="btn btn--ghost" href="#components">Our services</a>
+              <a class="link" href="#components">Read more</a>
+            </div>
+            <div class="field" style="max-width: 22rem"><label class="field__label" for="f1">Email</label><input class="field__input" id="f1" type="email" placeholder="you@example.com"></div>
+          </div>
+          <div class="panel theme-dark" data-reveal>
+            <p class="t-label">Buttons · dark chapter</p>
+            <div class="btn-row">
+              <a class="btn" href="#components">Schedule a visit <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+              <a class="btn btn--ghost" href="#components">Call (719) 260-9611</a>
+              <a class="link" href="#components">Read more</a>
+            </div>
+            <div class="field" style="max-width: 22rem"><label class="field__label" for="f2">Phone</label><input class="field__input" id="f2" type="tel" placeholder="(719) 000-0000"></div>
+          </div>
+          <div class="panel theme-spruce" data-reveal>
+            <p class="t-label">Spruce chapter · stats</p>
+            <div class="stats">
+              <div class="stat"><span class="stat__value t-num"><span data-count="20" data-suffix="+">20+</span></span><span class="t-small">years in practice</span></div>
+              <div class="stat"><span class="stat__value t-num"><span data-count="6">6</span></span><span class="t-small">ways we treat</span></div>
+            </div>
+          </div>
+          <div class="on-photo" data-reveal>
+            <img src="assets/img/interior/gym-lunge.jpg" alt="" style="object-position: 50% 35%">
+            <div class="glass">
+              <p class="t-label" style="color: rgb(247 245 241 / .75)">Glass panel · over photography</p>
+              <p class="t-h3">New patients welcome</p>
+              <a class="btn btn--glass" href="#components">Book online <svg class="btn__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-9)">
+          <p class="t-label" style="margin-bottom: var(--space-5)">Service cards · hover to settle the image</p>
+          <div class="cards3" data-reveal-group>
+            <a class="card" href="#components" data-reveal>
+              <div class="media media--portrait"><img src="assets/img/interior/adjust-red-light.jpg" alt="Chiropractic care under red light therapy"></div>
+              <div class="card__meta"><h3 class="card__title">Chiropractic care</h3><span class="t-label">01</span></div>
+            </a>
+            <a class="card" href="#components" data-reveal>
+              <div class="media media--portrait"><img src="assets/img/interior/dry-needling.jpg" alt="Dry needling treatment on the lower back" style="object-position: 40% 50%"></div>
+              <div class="card__meta"><h3 class="card__title">Dry needling</h3><span class="t-label">02</span></div>
+            </a>
+            <a class="card" href="#components" data-reveal>
+              <div class="media media--portrait"><img src="assets/img/interior/strength-dumbbell.jpg" alt="Personal training with a dumbbell row"></div>
+              <div class="card__meta"><h3 class="card__title">Personal training</h3><span class="t-label">03</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-9)">
+          <p class="t-label" style="margin-bottom: var(--space-5)">Index list · hover a row (desktop) for a following preview</p>
+          <ul class="index-list" data-index-preview>
+            <li><a class="index-row" href="#components" data-image="assets/img/interior/table-adjust.jpg"><span class="index-row__num">01</span><h3 class="index-row__title">Chiropractic care</h3><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+            <li><a class="index-row" href="#components" data-image="assets/img/interior/dry-needling.jpg"><span class="index-row__num">02</span><h3 class="index-row__title">Dry needling therapy</h3><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+            <li><a class="index-row" href="#components" data-image="assets/img/interior/consult-screen.jpg"><span class="index-row__num">03</span><h3 class="index-row__title">Physical therapy</h3><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+            <li><a class="index-row" href="#components" data-image="assets/img/interior/gym-lunge.jpg"><span class="index-row__num">04</span><h3 class="index-row__title">Personal training</h3><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+            <li><a class="index-row" href="#components" data-image="assets/img/interior/gyrostim.jpg"><span class="index-row__num">05</span><h3 class="index-row__title">GyroStim</h3><svg class="index-row__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTION ------------------------------------------------------------->
+    <section class="section theme-dark" id="motion">
+      <div class="container">
+        <div class="ds-head">
+          <div class="stack" style="--stack: var(--space-4)"><p class="t-label t-label--accent">Motion</p><h2 class="t-h1" data-split>Slow in, settled out.</h2></div>
+          <p class="t-body" data-reveal>Smooth scrolling (Lenis) plus GSAP ScrollTrigger, driven by data attributes so pages stay plain HTML. Motion eases out and settles, never bounces. With reduced motion turned on, everything simply appears.</p>
+        </div>
+
+        <div class="demo-grid" style="margin-bottom: var(--space-9)">
+          <div class="motion-cell" data-reveal><p class="t-label">data-split</p><p class="t-h2" data-split>Headlines rise line by line from behind a mask.</p></div>
+          <div class="motion-cell" data-reveal><p class="t-label">data-reveal · data-reveal-group</p><p class="t-body">Blocks fade and rise 28px with an expo ease-out. Grouped items stagger 80ms apart. Used on almost everything.</p></div>
+        </div>
+
+        <div class="motion-cell" style="margin-bottom: var(--space-9)">
+          <p class="t-label">data-clip · the image opens as you scroll</p>
+          <div class="clip-demo" data-clip><img src="assets/img/interior/consult-screen.jpg" alt="Reviewing posture analysis on screen in the spruce consult room"></div>
+        </div>
+
+        <div class="demo-grid" style="margin-bottom: var(--space-9)">
+          <div class="motion-cell">
+            <p class="t-label">data-parallax · the image drifts inside its frame</p>
+            <div class="media media--portrait"><img data-parallax="0.14" src="assets/img/interior/adjust-red-light.jpg" alt=""></div>
+          </div>
+          <div class="motion-cell" style="align-content: center">
+            <p class="t-label">Easing tokens · hover a row</p>
+            <div class="ease-row"><code class="t-small">--ease-out</code><div class="ease-track"><i class="ease-ball" style="transition: left 1.1s var(--ease-out)"></i></div></div>
+            <div class="ease-row"><code class="t-small">--ease-inout</code><div class="ease-track"><i class="ease-ball" style="transition: left 1.4s var(--ease-inout)"></i></div></div>
+            <div class="ease-row"><code class="t-small">--ease-ui</code><div class="ease-track"><i class="ease-ball" style="transition: left .22s var(--ease-ui)"></i></div></div>
+            <p class="t-small" style="margin-top: var(--space-4)">UI 220ms · reveals 1100ms · wipes 1400ms · stagger 80ms</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hz" data-horizontal>
+        <div class="container" style="margin-bottom: var(--space-6)"><p class="t-label">data-horizontal · the section pins and slides sideways (desktop)</p></div>
+        <div class="hz__track" data-track>
+          <div class="hz__item"><div class="media"><img src="assets/img/interior/table-adjust.jpg" alt="" style="object-position: 60% 50%"></div><p class="t-h3">Assess</p><p class="t-small">History, focused exam, movement screen.</p></div>
+          <div class="hz__item"><div class="media"><img src="assets/img/interior/neck-adjust.jpg" alt="" style="object-position: 70% 50%"></div><p class="t-h3">Treat</p><p class="t-small">Adjustments, soft tissue, dry needling.</p></div>
+          <div class="hz__item"><div class="media"><img src="assets/img/interior/gym-lunge.jpg" alt=""></div><p class="t-h3">Strengthen</p><p class="t-small">Rehab and training so results stick.</p></div>
+          <div class="hz__item"><div class="media"><img src="assets/img/interior/strength-dumbbell.jpg" alt=""></div><p class="t-h3">Stay moving</p><p class="t-small">A plan for life outside the clinic.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ds-foot theme-dark" style="background: var(--slate-950)">
+      <div class="container">
+        <p class="ds-foot__mark t-num" style="font-family: var(--font-display)" data-reveal>CBB</p>
+        <hr class="rule" style="margin-block: var(--space-6)">
+        <div style="display:flex; justify-content: space-between; gap: var(--space-5); flex-wrap: wrap">
+          <p class="t-small">Center for Better Balance · 5350 Tomah Dr #1600, Colorado Springs</p>
+          <p class="t-label">Design system v0.1 · Draft</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/SplitText.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script src="assets/js/motion.js"></script>
+</body>
+</html>

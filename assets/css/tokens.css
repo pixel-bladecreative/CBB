@@ -1,0 +1,145 @@
+/* =========================================================================
+   CBB Design Tokens
+   Palette sampled from the clinic interior: slate & spruce walls, walnut
+   floors and cabinetry, navy leather tables, ochre accents, plaster light.
+   ========================================================================= */
+
+:root {
+  /* ---- Raw palette -------------------------------------------------- */
+  --plaster-50:  #F7F5F1;   /* page canvas */
+  --plaster-100: #EFEBE4;   /* raised light surface */
+  --plaster-200: #E3DDD3;   /* linen band / hover */
+  --plaster-300: #CFC7BA;   /* strong rule on light */
+
+  --slate-950: #171C1E;     /* deepest chapter */
+  --slate-900: #1F2629;     /* dark chapter canvas */
+  --slate-800: #2B3437;     /* raised dark surface */
+  --slate-700: #3B474C;     /* the treatment-room wall */
+  --slate-400: #7F9396;     /* window light / mist */
+  --slate-200: #C3CCCC;
+
+  --spruce-800: #26332D;
+  --spruce-700: #33433C;    /* the green consult wall */
+  --spruce-200: #CDD5CB;
+  --spruce-100: #E1E6DE;
+
+  --walnut-700: #4A2E1D;
+  --walnut-500: #7A5236;    /* floors & cabinetry */
+  --walnut-300: #B38E6E;
+
+  --leather-700: #233A4E;   /* navy treatment tables */
+  --leather-500: #2F4D66;
+
+  --ochre-500: #B7863A;     /* signal accent, use sparingly */
+  --ochre-300: #D9B576;
+
+  --ink-900: #1C1B17;       /* warm near-black text */
+  --ink-700: #3A3833;
+  --ink-500: #6A665E;
+
+  /* ---- Semantic roles (light context = default) --------------------- */
+  --color-bg:          var(--plaster-50);
+  --color-surface:     var(--plaster-100);
+  --color-surface-2:   var(--plaster-200);
+  --color-text:        var(--ink-900);
+  --color-text-muted:  var(--ink-500);
+  --color-rule:        rgb(28 27 23 / 0.14);
+  --color-rule-strong: rgb(28 27 23 / 0.32);
+  --color-action:      var(--ink-900);
+  --color-action-text: var(--plaster-50);
+  --color-action-hover:var(--slate-700);
+  --color-accent:      var(--ochre-500);   /* marks, dots, numerals — never body text on light */
+  --color-focus:       var(--leather-500);
+
+  /* ---- Typography --------------------------------------------------- */
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans:    "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Fluid scale: min @ 375px → max @ 1440px */
+  --text-mega:  clamp(3.25rem, 1.6rem + 7vw, 8rem);      /* 52 → 128 */
+  --text-hero:  clamp(2.5rem, 1.5rem + 4.3vw, 5.25rem);  /* 40 → 84  */
+  --text-h1:    clamp(2.125rem, 1.5rem + 2.6vw, 3.75rem);/* 34 → 60  */
+  --text-h2:    clamp(1.75rem, 1.35rem + 1.6vw, 2.75rem);/* 28 → 44  */
+  --text-h3:    clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);/* 22 → 28  */
+  --text-lead:  clamp(1.125rem, 1.03rem + 0.4vw, 1.375rem);/* 18 → 22 */
+  --text-body:  1.0625rem;  /* 17 */
+  --text-small: 0.9375rem;  /* 15 */
+  --text-label: 0.75rem;    /* 12, mono uppercase */
+
+  --leading-display: 1.02;
+  --leading-heading: 1.1;
+  --leading-body:    1.6;
+  --tracking-display: -0.025em;
+  --tracking-heading: -0.015em;
+  --tracking-label:   0.12em;
+
+  /* ---- Space (8pt base) --------------------------------------------- */
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+  --section-y: clamp(5rem, 3rem + 8vw, 10rem);
+  --gutter:    clamp(1rem, 0.4rem + 2.6vw, 2.5rem);   /* 16 → 40 */
+  --max-w:     1360px;
+  --measure:   36rem;  /* comfortable reading width */
+
+  /* ---- Shape -------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;    /* buttons, inputs */
+  --radius-md: 10px;   /* cards, media */
+  --radius-lg: 18px;   /* large media stages */
+  --radius-full: 999px;/* dots, avatars only */
+
+  /* ---- Depth: flat by default; one soft lift for floating UI -------- */
+  --shadow-float: 0 1px 1px rgb(23 28 30 / 0.04), 0 12px 32px -12px rgb(23 28 30 / 0.28);
+  --blur-glass: blur(18px) saturate(1.2);
+
+  /* ---- Motion ------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);     /* expo-ish settle: reveals */
+  --ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);     /* image wipes, page moves */
+  --ease-ui:     cubic-bezier(0.4, 0, 0.2, 1);       /* hovers, color */
+  --dur-ui:      220ms;
+  --dur-reveal:  1100ms;
+  --dur-wipe:    1400ms;
+  --stagger:     80ms;
+}
+
+/* ---- Dark chapter context: add .theme-dark to any section ------------ */
+.theme-dark {
+  --color-bg:          var(--slate-900);
+  --color-surface:     var(--slate-800);
+  --color-surface-2:   var(--slate-700);
+  --color-text:        var(--plaster-50);
+  --color-text-muted:  rgb(247 245 241 / 0.62);
+  --color-rule:        rgb(247 245 241 / 0.14);
+  --color-rule-strong: rgb(247 245 241 / 0.32);
+  --color-action:      var(--plaster-50);
+  --color-action-text: var(--slate-950);
+  --color-action-hover:var(--ochre-300);
+  --color-accent:      var(--ochre-300);
+  --color-focus:       var(--ochre-300);
+}
+.theme-spruce {
+  --color-bg:          var(--spruce-700);
+  --color-surface:     var(--spruce-800);
+  --color-text:        var(--plaster-50);
+  --color-text-muted:  rgb(247 245 241 / 0.66);
+  --color-rule:        rgb(247 245 241 / 0.16);
+  --color-rule-strong: rgb(247 245 241 / 0.36);
+  --color-action:      var(--plaster-50);
+  --color-action-text: var(--spruce-800);
+  --color-action-hover:var(--ochre-300);
+  --color-accent:      var(--ochre-300);
+  --color-focus:       var(--ochre-300);
+}
+.theme-linen {
+  --color-bg:      var(--plaster-200);
+  --color-surface: var(--plaster-100);
+}

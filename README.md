@@ -2,6 +2,8 @@
 
 Experimental website redesign, part of Pixel Blade Creative.
 
+Design system: see `DESIGN.md` and `design-system.html`.
+
 ## Run locally
 
 No build step. Open `index.html`, or serve the folder:

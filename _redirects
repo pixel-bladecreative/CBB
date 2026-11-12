@@ -6,3 +6,8 @@
 /cart                      /                          301
 # Service pages (/chiropractic-care, /dry-needling, /massage, /additional-therapies, /physical-therapy)
 # keep their URLs; build them before launch so these never 404.
+
+# Internal docs: never serve
+/SEO-GEO.md   /404   404!
+/DESIGN.md    /404   404!
+/README.md    /404   404!
